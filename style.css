@@ -1,0 +1,59 @@
+:root { color-scheme: dark; font-family: system-ui, sans-serif; color: #e7f2f4; background: #071827; line-height: 1.55; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; background: radial-gradient(ellipse at 75% 0, #123f4a 0, transparent 40%), #071827; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem clamp(1rem, 5vw, 4rem); border-bottom: 1px solid #2b4754; }
+.brand { color: #f3fcfa; text-decoration: none; font-weight: 900; letter-spacing: .12em; }
+.brand span { color: #ffce63; }
+.brand small { display: block; font-size: .55rem; letter-spacing: .17em; color: #9ab6be; }
+.status { display: flex; gap: 1rem; color: #b6d2d3; font-size: .85rem; font-variant-numeric: tabular-nums; }
+main { flex: 1; width: min(1200px, 100%); margin: 0 auto; padding: 3rem clamp(1rem, 5vw, 3rem); }
+.intro { max-width: 850px; }
+.eyebrow { color: #65dec3; font-size: .75rem; font-weight: 800; letter-spacing: .15em; }
+h1 { font-size: clamp(2.4rem, 6vw, 4.7rem); line-height: 1.07; letter-spacing: -.045em; margin: .6rem 0 1.5rem; }
+h1 em { color: #ffce63; font-style: normal; }
+h2 { line-height: 1.2; }
+.lead { max-width: 720px; font-size: 1.12rem; color: #c3d6da; }
+.intro-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+.intro-grid div { border-left: 2px solid #65dec3; padding-left: 1rem; }
+.intro-grid strong, .intro-grid span { display: block; }
+.intro-grid span, .muted { color: #a4bec4; font-size: .88rem; }
+.briefing, .puzzle, .success { background: #102b38; border: 1px solid #31515c; border-radius: 12px; padding: clamp(1.2rem, 3vw, 2rem); }
+.briefing h2 { margin-top: 0; }
+.safety { color: #ffdf9a; }
+.primary { background: #ffce63; color: #14262a; border: 0; border-radius: 7px; padding: .8rem 1.3rem; font-weight: 800; }
+.primary:hover { background: #ffe09c; }
+#start { margin-top: 1.5rem; }
+.game { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 2rem; }
+.sidebar ol { list-style: none; margin: 1rem 0 2rem; padding: 0; }
+.sidebar li { margin-bottom: .35rem; }
+.nav-button { width: 100%; text-align: left; background: transparent; color: #a8c0c6; border: 1px solid transparent; border-radius: 6px; padding: .55rem .65rem; }
+.nav-button.active { color: #fff; background: #193b47; border-color: #3a6470; }
+.nav-button:disabled { opacity: .48; cursor: not-allowed; }
+.text-button { color: #bad1d3; background: transparent; border: 0; padding: .4rem; text-decoration: underline; }
+.room-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.room-heading span { color: #a9c5c6; white-space: nowrap; font-size: .85rem; }
+.puzzle h1 { font-size: clamp(2rem, 4vw, 3rem); }
+.story { color: #c3d6da; border-left: 3px solid #ffce63; padding-left: 1rem; }
+.task { margin: 1.5rem 0; }
+.task label { display: block; font-weight: 650; margin-bottom: .45rem; }
+.task input, .task select { width: min(100%, 550px); background: #071e2a; color: #fff; border: 1px solid #6b8a92; border-radius: 6px; padding: .7rem; }
+.task input[aria-invalid="true"], .task select[aria-invalid="true"] { border-color: #ff8e83; }
+.task-result { min-height: 1.4em; display: block; margin-top: .25rem; font-size: .88rem; color: #ffb5ad; }
+details { border-top: 1px solid #31515c; margin: 1.5rem 0; padding-top: 1rem; color: #c1d9d8; }
+summary { cursor: pointer; font-weight: 700; color: #65dec3; }
+.feedback { min-height: 1.5em; color: #ffcf94; }
+.success { border-color: #65dec3; }
+.success h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+footer { color: #8daab1; text-align: center; padding: 1.5rem; font-size: .8rem; }
+:focus-visible { outline: 3px solid #ffce63; outline-offset: 3px; }
+[hidden] { display: none !important; }
+@media (max-width: 700px) {
+  .game { grid-template-columns: 1fr; }
+  .sidebar ol { display: flex; overflow-x: auto; gap: .3rem; margin-bottom: .5rem; }
+  .sidebar li { flex: 0 0 auto; }
+  .nav-button { width: auto; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .status { flex-direction: column; gap: 0; align-items: end; }
+}
