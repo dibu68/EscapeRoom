@@ -36,6 +36,10 @@ h2 { line-height: 1.2; }
 .room-heading span { color: #a9c5c6; white-space: nowrap; font-size: .85rem; }
 .puzzle h1 { font-size: clamp(2rem, 4vw, 3rem); }
 .story { color: #c3d6da; border-left: 3px solid #ffce63; padding-left: 1rem; }
+.evidence { margin: 1.5rem 0; padding: 1rem 1.2rem; background: #09222d; border: 1px solid #31515c; border-radius: 8px; }
+.evidence h2 { margin: 0 0 .8rem; font-size: 1rem; color: #65dec3; }
+.evidence p { margin: .8rem 0; }
+.goal { font-weight: 700; color: #ffdf9a; }
 .task { margin: 1.5rem 0; }
 .task label { display: block; font-weight: 650; margin-bottom: .45rem; }
 .task input, .task select { width: min(100%, 550px); background: #071e2a; color: #fff; border: 1px solid #6b8a92; border-radius: 6px; padding: .7rem; }

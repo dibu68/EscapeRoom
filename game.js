@@ -1,6 +1,6 @@
 "use strict";
 
-const storageKey = "blackout-energiezentrum-v1";
+const storageKey = "blackout-energiezentrum-v2";
 const intro = document.querySelector("#intro");
 const game = document.querySelector("#game");
 const room = document.querySelector("#room");
@@ -95,61 +95,45 @@ function render() {
     element("span", `ca. ${puzzle.time} Min.`));
   panel.append(heading, element("h1", puzzle.title), element("p", puzzle.story, "story"));
 
+  const evidence = element("div", undefined, "evidence");
+  evidence.append(element("h2", "Spuren & Fundstücke"));
+  puzzle.clues.forEach(clue => evidence.append(element("p", clue)));
+  panel.append(evidence, element("p", puzzle.goal, "goal"));
+
   const form = element("form");
   form.noValidate = true;
-  puzzle.questions.forEach((question, index) => {
-    const wrapper = element("div", undefined, "task");
-    const id = `answer-${index}`;
-    const label = element("label", `${index + 1}. ${question.text}`);
-    label.htmlFor = id;
-    let input;
-    if (question.options) {
-      input = element("select");
-      const placeholder = element("option", "Bitte auswählen");
-      placeholder.value = "";
-      input.append(placeholder);
-      question.options.forEach((option, optionIndex) => {
-        const entry = element("option", option);
-        entry.value = String(optionIndex);
-        input.append(entry);
-      });
-    } else {
-      input = element("input");
-      input.type = "text";
-      input.inputMode = "decimal";
-      input.autocomplete = "off";
-      input.placeholder = "Zahlenwert eingeben";
-    }
-    input.id = id;
-    input.setAttribute("aria-describedby", `${id}-result`);
-    const result = element("span", "", "task-result");
-    result.id = `${id}-result`;
-    wrapper.append(label, input, result);
-    form.append(wrapper);
+  const wrapper = element("div", undefined, "task");
+  const label = element("label", "Dreistelliger Zugangscode");
+  label.htmlFor = "answer";
+  const input = element("input");
+  input.id = "answer";
+  input.type = "text";
+  input.inputMode = "numeric";
+  input.autocomplete = "off";
+  input.maxLength = 3;
+  input.placeholder = "Zum Beispiel 042";
+  input.setAttribute("aria-describedby", "answer-result");
+  const result = element("span", "", "task-result");
+  result.id = "answer-result";
+  wrapper.append(label, input, result);
+  form.append(wrapper);
+  puzzle.hints.forEach((hint, index) => {
+    const details = element("details");
+    details.append(element("summary", `Hinweis ${index + 1} anzeigen`), element("p", hint));
+    form.append(details);
   });
-  const details = element("details");
-  details.append(element("summary", "Hinweis anzeigen"), element("p", puzzle.hint));
   const feedback = element("p", "", "feedback");
   feedback.setAttribute("role", "status");
-  const submit = element("button", "Antworten prüfen", "primary");
+  const submit = element("button", "Code prüfen", "primary");
   submit.type = "submit";
-  form.append(details, feedback, submit);
+  form.append(feedback, submit);
   form.addEventListener("submit", event => {
     event.preventDefault();
-    let correct = true;
-    puzzle.questions.forEach((question, index) => {
-      const input = form.querySelector(`#answer-${index}`);
-      const raw = input.value.trim().replace(",", ".");
-      const validNumber = /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(raw);
-      const matches = question.options
-        ? raw !== "" && Number(raw) === question.answer
-        : validNumber && Math.abs(Number(raw) - question.answer) < 1e-8;
-      input.setAttribute("aria-invalid", String(!matches));
-      form.querySelector(`#answer-${index}-result`).textContent = matches ? "✓ Richtig" : "Noch nicht richtig – prüft eure Antwort.";
-      if (!matches) correct = false;
-    });
-    if (!correct) {
-      feedback.textContent = "Noch nicht alle Antworten stimmen. Nutzt bei Bedarf den Hinweis.";
+    const matches = input.value.trim() === puzzle.code;
+    input.setAttribute("aria-invalid", String(!matches));
+    result.textContent = matches ? "✓ Code korrekt" : "Der Code stimmt noch nicht.";
+    if (!matches) {
+      feedback.textContent = "Prüft eure Spuren und die Reihenfolge. Nutzt bei Bedarf die Hinweise.";
       return;
     }
     if (current === state.completed) {
@@ -159,7 +143,7 @@ function render() {
     }
     updateStatus();
     renderNavigation();
-    feedback.textContent = current === puzzles.length - 1 ? "Alle Antworten stimmen. Die Notversorgung ist bereit!" : "Alle Antworten stimmen. Die nächste Station ist freigeschaltet!";
+    feedback.textContent = current === puzzles.length - 1 ? "Der Code stimmt. Die Notversorgung ist bereit!" : "Der Code stimmt. Die nächste Station ist freigeschaltet!";
     submit.hidden = true;
     const next = element("button", current === puzzles.length - 1 ? "Mission abschließen" : "Zur nächsten Station →", "primary");
     next.type = "button";

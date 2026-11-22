@@ -8,7 +8,7 @@ Ein browserbasiertes Escape-Abenteuer für Auszubildende der Elektrotechnik im *
 2. `index.html` in einem aktuellen Browser öffnen. Es werden weder Installation noch Internetverbindung benötigt.
 3. „Mission starten“ auswählen. Die Stationen werden nacheinander freigeschaltet.
 
-Das Spiel speichert den Fortschritt im Browser auf dem jeweiligen Gerät. Die Uhr läuft auch bei geschlossener Seite weiter und endet nach der letzten gelösten Station; sie ist ein Richtwert und kein Zeitlimit. Über „Spielstand zurücksetzen“ kann neu begonnen werden. Bei deaktiviertem Browserspeicher ist ein Spiel innerhalb der geöffneten Seite möglich, aber nicht dauerhaft speicherbar.
+Das Spiel speichert den Fortschritt im Browser auf dem jeweiligen Gerät. Die Uhr läuft auch bei geschlossener Seite weiter und endet nach der letzten gelösten Station; sie ist ein Richtwert und kein Zeitlimit. Über „Spielstand zurücksetzen“ kann neu begonnen werden. Bei deaktiviertem Browserspeicher ist ein Spiel innerhalb der geöffneten Seite möglich, aber nicht dauerhaft speicherbar. Die überarbeitete Rätselversion beginnt mit einem eigenen Spielstand; Spielstände der früheren Quizversion werden nicht übernommen.
 
 ## Im Unterricht
 
@@ -17,7 +17,7 @@ Das Spiel speichert den Fortschritt im Browser auf dem jeweiligen Gerät. Die Uh
 - **Sozialform:** Teams mit 2–4 Personen, ein Gerät pro Team.
 - **Material:** Taschenrechner, Papier und Stift; Rechenwege und Begründungen dokumentieren.
 - **Ablauf:** Einführung und Sicherheitsbesprechung, Mission starten, Stationen gemeinsam bearbeiten, anschließend Lösungen und Messmethoden besprechen. Hinweise sind an jeder Station verfügbar.
-- **Eingabe:** Zahlenwerte ohne Einheit, mit Dezimalpunkt oder Dezimalkomma; bei Auswahlfragen eine Antwort wählen. Alle Antworten einer Station müssen stimmen.
+- **Eingabe:** Die Hinweise und Fundstücke einer Station zu einem dreistelligen Zugangscode kombinieren. Der Code wird als Ziffernfolge eingegeben; führende Nullen bleiben erhalten. Zwei Hinweise pro Station helfen bei Bedarf.
 
 Das Spiel vertieft die angefragten elektrotechnischen Grundlagen; es bildet **nicht den vollständigen Kompetenzumfang aller vier Lernfelder** ab. Die praktische Arbeit an Anlagen wird nicht ersetzt. Alle Messaufgaben sind Simulationen; bei realen Arbeiten gelten die betrieblichen Vorgaben, Unterweisung und die fünf Sicherheitsregeln.
 
